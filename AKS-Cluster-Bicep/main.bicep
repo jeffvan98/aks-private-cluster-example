@@ -36,6 +36,7 @@ param acrRGName string
 
 @allowed([
   'azure'
+  'azure-overlay'
   'kubenet'
 ])
 param networkPlugin string = 'kubenet'

@@ -24,6 +24,7 @@ param userNodePool2Sku string
 
 @allowed([
   'azure'
+  'azure-overlay'
   'kubenet'
 ])
 param networkPlugin string = 'kubenet'
@@ -95,6 +96,14 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2022-11-01' = {
     
     disableLocalAccounts: true
 
+    // network profile modifications
+    // outboundType:
+    // https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay
+    //    - loadBalancer
+    //    - managedNATGateway
+    //    - userAssignedNATGateway
+    //    - userDefinedRouting
+
     networkProfile: networkPlugin == 'azure' ? {
       networkPlugin: 'azure'
       outboundType: 'userDefinedRouting'
@@ -102,7 +111,15 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2022-11-01' = {
       dnsServiceIP: '192.168.100.10'
       serviceCidr: '192.168.100.0/24'
       networkPolicy: 'calico'
-    }:{
+    } : networkPlugin == 'azure-overlay' ? {
+      networkPlugin: 'azure'
+      networkPluginMode: 'overlay'
+      outboundType: 'userDefinedRouting'
+      dockerBridgeCidr: '172.16.1.1/30'
+      dnsServiceIP: '192.168.100.10'
+      serviceCidr: '192.168.100.0/24'
+      networkPolicy: 'calico'
+    } : {
       networkPlugin: 'kubenet'
       outboundType: 'userDefinedRouting'
       dockerBridgeCidr: '172.16.1.1/30'
@@ -111,6 +128,7 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2022-11-01' = {
       networkPolicy: 'calico'
       podCidr: podCidr
     }
+
     apiServerAccessProfile: {
       enablePrivateCluster: true
       disableRunCommand: true
@@ -168,20 +186,20 @@ resource aksdiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-previe
       {
         category: 'kube-audit-admin'
         enabled: true
-        retentionPolicy: {
-          days: 30
-          enabled: true
-        }
+//        retentionPolicy: {
+//          days: 30
+//          enabled: true
+//        }
       }
     ]
     metrics: [
       {
         category: 'AllMetrics'
         enabled: true
-        retentionPolicy: {
-          days: 30
-          enabled: true
-        }
+//        retentionPolicy: {
+//          days: 30
+//          enabled: true
+//        }
       }
     ]
     workspaceId: logworkspaceid
