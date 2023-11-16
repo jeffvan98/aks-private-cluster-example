@@ -29,7 +29,7 @@ param userNodePool2Sku string
 ])
 param networkPlugin string = 'kubenet'
 
-resource aksCluster 'Microsoft.ContainerService/managedClusters@2022-11-01' = {
+resource aksCluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
   name: clusterName
   location: location
   identity: {
@@ -105,24 +105,24 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2022-11-01' = {
     //    - userDefinedRouting
 
     networkProfile: networkPlugin == 'azure' ? {
+      networkDataplane: 'azure'
       networkPlugin: 'azure'
       outboundType: 'userDefinedRouting'
-      dockerBridgeCidr: '172.16.1.1/30'
       dnsServiceIP: '192.168.100.10'
       serviceCidr: '192.168.100.0/24'
       networkPolicy: 'calico'
     } : networkPlugin == 'azure-overlay' ? {
+      networkDataplane: 'azure'
       networkPlugin: 'azure'
       networkPluginMode: 'overlay'
       outboundType: 'userDefinedRouting'
-      dockerBridgeCidr: '172.16.1.1/30'
       dnsServiceIP: '192.168.100.10'
       serviceCidr: '192.168.100.0/24'
       networkPolicy: 'calico'
     } : {
+      networkDataplane: 'azure'
       networkPlugin: 'kubenet'
       outboundType: 'userDefinedRouting'
-      dockerBridgeCidr: '172.16.1.1/30'
       dnsServiceIP: '192.168.100.10'
       serviceCidr: '192.168.100.0/24'
       networkPolicy: 'calico'
