@@ -36,6 +36,9 @@
     "upgradeChannel": {
       "value": "rapid"
     },
+    "osSku": {
+      "value": "AzureLinux"
+    },
     "systemNodePoolSku": {
       "value": "Standard_D4lds_v5"
     },

@@ -36,6 +36,9 @@
     "upgradeChannel": {
       "value": "None"
     },
+    "osSku": {
+      "value": "Azure"
+    },    
     "systemNodePoolSku": {
       "value": "Standard_D4lds_v5"
     },

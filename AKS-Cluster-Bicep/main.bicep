@@ -23,6 +23,11 @@ param podCidr string //= '172.17.0.0/16'
 param upgradeChannel string
 param nodeOSUpgradeChannel string
 
+@allowed([
+  'Ubuntu'
+  'AzureLinux'
+])
+param osSku string = 'Ubuntu'
 
 param systemNodePoolReplicas int
 param userNodePool1Replicas int
@@ -130,6 +135,7 @@ module aksCluster 'modules/aks/privateaks.bicep' = {
     userNodePool1Replicas: userNodePool1Replicas
     userNodePool2Replicas: userNodePool2Replicas
     systemNodePoolReplicas: systemNodePoolReplicas
+    osSku: osSku
     nodeOSUpgradeChannel:nodeOSUpgradeChannel
     upgradeChannel: upgradeChannel
     //kubernetesVersion: kubernetesVersion

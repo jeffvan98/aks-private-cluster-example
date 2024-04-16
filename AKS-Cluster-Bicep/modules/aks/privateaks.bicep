@@ -20,6 +20,11 @@ param userNodePool2Replicas int
 param systemNodePoolSku string
 param userNodePool1Sku string
 param userNodePool2Sku string
+@allowed([
+  'Ubuntu'
+  'AzureLinux'
+])
+param osSku string = 'Ubuntu'
 
 
 @allowed([
@@ -29,7 +34,7 @@ param userNodePool2Sku string
 ])
 param networkPlugin string = 'kubenet'
 
-resource aksCluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
+resource aksCluster 'Microsoft.ContainerService/managedClusters@2023-10-01' = {
   name: clusterName
   location: location
   identity: {
@@ -44,6 +49,9 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
       {
         enableAutoScaling: enableAutoScaling
         name: 'systempool'
+        nodeLabels: {
+          role: 'system'
+        }        
         availabilityZones: !empty(availabilityZones) ? availabilityZones : null
         mode: 'System'
         enableEncryptionAtHost: true
@@ -54,6 +62,8 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
         minCount: enableAutoScaling ? 1 : null
         maxCount: enableAutoScaling ? 3 : null
         vmSize: systemNodePoolSku
+        osType: 'Linux'
+        osSKU: osSku
         osDiskSizeGB: 30
         type: 'VirtualMachineScaleSets'
         vnetSubnetID: subnetId
@@ -61,6 +71,9 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
       {
         enableAutoScaling: enableAutoScaling
         name: 'usernp1'
+        nodeLabels: {
+          role: 'usernp1'
+        }        
         availabilityZones: !empty(availabilityZones) ? availabilityZones : null
         mode: 'User'
         enableEncryptionAtHost: true
@@ -68,6 +81,8 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
         minCount: enableAutoScaling ? 1 : null
         maxCount: enableAutoScaling ? 3 : null
         vmSize: userNodePool1Sku
+        osType: 'Linux'
+        osSKU: osSku
         osDiskSizeGB: 30
         type: 'VirtualMachineScaleSets'
         vnetSubnetID: subnetId
@@ -75,6 +90,9 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
       {
         enableAutoScaling: enableAutoScaling
         name: 'usernp2'
+        nodeLabels: {
+          role: 'usernp2'
+        }
         availabilityZones: !empty(availabilityZones) ? availabilityZones : null
         mode: 'User'
         enableEncryptionAtHost: true
@@ -82,6 +100,8 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
         minCount: enableAutoScaling ? 1 : null
         maxCount: enableAutoScaling ? 3 : null
         vmSize: userNodePool2Sku
+        osType: 'Linux'
+        osSKU: osSku
         osDiskSizeGB: 30
         type: 'VirtualMachineScaleSets'
         vnetSubnetID: subnetId
@@ -118,6 +138,7 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
       outboundType: 'userDefinedRouting'
       dnsServiceIP: '192.168.100.10'
       serviceCidr: '192.168.100.0/24'
+      podCidr: podCidr
       networkPolicy: 'calico'
     } : {
       networkDataplane: 'azure'
