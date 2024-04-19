@@ -1,0 +1,52 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "redisResourceGroupName": {
+            "value": "2024-04-18-RG-32"
+        },
+        "redisName": {
+            "value": "REDIS-4532"
+        },
+        "redisSku": {
+            "value": "Standard"
+        },
+        "redisFamily": {
+            "value": "C"
+        },
+        "redisCapacity": {
+            "value": 0
+        },
+        "redisVirtualNetworkResourceGroupName": {
+            "value": "2024-04-18-RG-32"
+        },
+        "redisVirtualNetworkName": {
+            "value": "VNET-4532"
+        },
+        "redisSubnetName": {
+            "value": "default"
+        },
+        "privateDnsZoneResourceGroupName": {
+            "value": "2024-04-18-RG-31"
+        },
+        "privateDnsZoneVirtualNetworkResourceGroupName": {
+            "value": "2024-04-18-RG-31"
+        },
+        "privateDnsZoneVirtualNetworkName": {
+            "value": "VNET-4531"
+        },
+        "keyVaultResourceGroupName": {
+            "value": "2024-04-18-RG-31"
+        },
+        "keyVaultName": {
+            "value": "VAULT-4531"
+        },
+        "redisHostNameKey": {
+            "value": "RedisHost"
+        },
+        "redisAccessKey": {
+            "value": "RedisKey"
+        }
+    }
+}
+  

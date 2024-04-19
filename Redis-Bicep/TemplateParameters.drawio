@@ -1,0 +1,91 @@
+<mxfile host="Electron" modified="2024-04-19T14:06:17.128Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="Y8I7nxROcpoLJaf2Gzan" version="24.2.5" type="device">
+  <diagram name="Page-1" id="mHGJekG6MWE_2JD7gwwK">
+    <mxGraphModel dx="1434" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-4" value="Redis Resource Group&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;This is where Redis will be installed.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="40" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-5" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Resource_Groups.svg;" vertex="1" parent="1">
+          <mxGeometry x="66" y="68" width="68" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-8" value="Redis&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;This service will be created&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="180" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-9" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="320" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-11" value="Redis Virtual Network Resource Group&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Redis will be connected to a virtual network located in this resource group.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="320" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-12" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Azure_Cache_for_Redis.svg;" vertex="1" parent="1">
+          <mxGeometry x="75" y="215" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-13" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="460" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-14" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Virtual_Networks.svg;" vertex="1" parent="1">
+          <mxGeometry x="66.5" y="500" width="67" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-15" value="Redis Virtual Network and Subnet&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Redis will be connected to this virtual network and subnet&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="460" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-16" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Resource_Groups.svg;" vertex="1" parent="1">
+          <mxGeometry x="65.5" y="348" width="68" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-17" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="440" y="180" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-18" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Virtual_Networks.svg;" vertex="1" parent="1">
+          <mxGeometry x="466.5" y="220" width="67" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-19" value="Private DNS Zone Virtual Network&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;The Redis Private DNS Zone will be linked to this virtual network&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="560" y="180" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-20" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="600" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-21" value="Private DNS Zone Resource Group&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;A private DNS zone will be created for Redis in this Resource Group&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="600" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-22" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Resource_Groups.svg;" vertex="1" parent="1">
+          <mxGeometry x="65.5" y="628" width="68" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-23" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-24" value="Private DNS Zone Virtual Network Resource Group&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;The Redis Private DNS Zone will be linked to a virtual network in this Resource Group&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="560" y="40" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-25" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Resource_Groups.svg;" vertex="1" parent="1">
+          <mxGeometry x="465.5" y="68" width="68" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-26" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="440" y="460" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-27" value="Key Vault&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Redis connectivity information wll be written here.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="560" y="460" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-29" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/security/Key_Vaults.svg;" vertex="1" parent="1">
+          <mxGeometry x="466" y="486" width="68" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-34" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="440" y="320" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-35" value="Key Vault Resource Group&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Redis connectivity information will be written to a Key Vault in this Resouce Group&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;align=left;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="560" y="320" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="K7-tWkUMt8c56_Ep5ib4-36" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Resource_Groups.svg;" vertex="1" parent="1">
+          <mxGeometry x="465.5" y="348" width="68" height="64" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
