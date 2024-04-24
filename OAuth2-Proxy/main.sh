@@ -27,40 +27,40 @@
 # ------------------------------------------------------------
 
 # container registry name; example: ACR7C02
-export CONTAINER_REGISTRY_NAME="ACR1177"
+export CONTAINER_REGISTRY_NAME=""
 
 # cluster name; example: AKS7C02
-export AKS_CLUSTER_NAME="AKS1177"
+export AKS_CLUSTER_NAME=""
 
 # cluster resource group; example: 2024-04-22-RG-01
-export AKS_CLUSTER_RESOURCE_GROUP="2024-04-16-RG-01"
+export AKS_CLUSTER_RESOURCE_GROUP=""
 
 # oauth2-proxy installation namespace; oauth2-proxy may be installed multiple times on a single cluster (per-application)
-export AKS_APPLICATION_NAMESPACE="test-app-01"
+export AKS_APPLICATION_NAMESPACE=""
 
 # oauth2-proxy ingress base URI; ex: https://dev.contoso.com/
-export AKS_APPLICATION_INGRESS_BASE_URI="https://aks1177.dev.dcc.loc"
+export AKS_APPLICATION_INGRESS_BASE_URI=""
 
 # oauth2-proxy will protect resources located at and below this path; example: neurology
-export AKS_APPLICATION_INGRESS_PATH="test-app-01"
+export AKS_APPLICATION_INGRESS_PATH=""
 
 # name of key vault that holds secrets, including redis connectivity; example: VAULT7C02
-export KEY_VAULT_NAME="VAULT1177"
+export KEY_VAULT_NAME=""
 
 # the name of the key vault secret which holds the oauth2-proxy app client id; ex: oauth2-proxy-client-id
-export OAUTH2_PROXY_APP_REGISTRATION_CLIENT_ID_KEY="oauth2-proxy-client-id"
+export OAUTH2_PROXY_APP_REGISTRATION_CLIENT_ID_KEY=""
 
 # the name of the key vault secret which holds the oauth2-proxy app secret; ex: oauth2-proxy-client-secret
-export OAUTH2_PROXY_APP_REGISTRATION_SECRET_KEY="oauth2-proxy-client-secret"
+export OAUTH2_PROXY_APP_REGISTRATION_SECRET_KEY=""
 
 # the name of the key vault secret which holds the oauth2-proxy redis server name; ex: oauth2-proxy-redis-name
-export OAUTH2_PROXY_REDIS_SERVICE_NAME_KEY="oauth2-proxy-redis-name"
+export OAUTH2_PROXY_REDIS_SERVICE_NAME_KEY=""
 
 # the name of the key vault secret which holds the oauth2-proxy redis server password; ex: oauth2-proxy-redis-password
-export OAUTH2_PROXY_REDIS_SERVICE_PASSWORD_KEY="oauth2-proxy-redis-password"
+export OAUTH2_PROXY_REDIS_SERVICE_PASSWORD_KEY=""
 
 # the name of the key vault secret which holds the oauth2-proxy cookie secret; ex: oauth2-proxy-cookie-secret
-export OAUTH2_PROXY_COOKIE_SECRET_KEY="oauth2-proxy-cookie-secret"
+export OAUTH2_PROXY_COOKIE_SECRET_KEY=""
 
 # ------------------------------------------------------------
 # INSTALLATION
