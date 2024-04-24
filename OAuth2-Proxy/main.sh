@@ -4,6 +4,7 @@
 # tools:
 # azure cli (az)
 # kubernetes cli (kubectl)
+# docker cli (docker)
 # helm cli (helm)
 #
 # environment:
@@ -35,7 +36,7 @@ export AKS_CLUSTER_NAME=""
 # cluster resource group; example: 2024-04-22-RG-01
 export AKS_CLUSTER_RESOURCE_GROUP=""
 
-# oauth2-proxy installation namespace; oauth2-proxy may be installed multiple times on a single cluster (per-application)
+# oauth2-proxy installation namespace; oauth2-proxy may be installed multiple times on a single cluster (per-application); ex: auth-neurology
 export AKS_APPLICATION_NAMESPACE=""
 
 # oauth2-proxy ingress base URI; ex: https://dev.contoso.com/

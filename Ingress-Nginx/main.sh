@@ -6,6 +6,7 @@
 # tools:
 # azure cli (az)
 # kubernetes cli (kubectl)
+# docker cli (docker)
 # helm cli (helm)
 #
 # environment:
