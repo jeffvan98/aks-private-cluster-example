@@ -4,7 +4,7 @@ This solution contains two sets of Bicep templates and two shell scripts.
 1. The first template deploys a secure AKS baseline cluster.
 2. The second template deploys a secure instance of Redis. Redis is intended to be used with the AKS cluster.
 3. The first shell script deploys ingress-nginx ingress controller.  This is to be run once.
-4. The second shell screipt deploys oauth2-proxy.  This is to be run once per security domain (applicaition) on the cluster
+4. The second shell script deploys oauth2-proxy.  This is to be run once per security domain (applicaition) on the cluster
 
 # Secure AKS Template
 
