@@ -54,7 +54,7 @@ resource rg 'Microsoft.Resources/resourceGroups@2020-06-01' existing = {
 }
 
 module aksIdentity 'modules/Identity/userassigned.bicep' = {
-  scope: resourceGroup(rg.name)
+  scope: rg
   name: aksIdentityName
   params: {
     location: location
@@ -63,7 +63,7 @@ module aksIdentity 'modules/Identity/userassigned.bicep' = {
 }
 
 module aksPodIdentityRole 'modules/Identity/role.bicep' = {
-  scope: resourceGroup(rg.name)
+  scope: rg
   name: 'aksPodIdentityRole'
   params: {
     principalId: aksIdentity.outputs.principalId
@@ -73,7 +73,7 @@ module aksPodIdentityRole 'modules/Identity/role.bicep' = {
 
 
 module privatednsAKSZone 'modules/vnet/privatednszone.bicep' = {
-  scope: resourceGroup(rg.name)
+  scope: rg
   name: 'privatednsAKSZone'
   params: {
     privateDNSZoneName: 'privatelink.${toLower(location)}.azmk8s.io'
@@ -88,7 +88,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2022-09-01' existing = {
 
 
 module privateDNSLinkAKS 'modules/vnet/privatednslink.bicep' = {
-  scope: resourceGroup(rg.name)
+  scope: rg
   name: 'privateDNSLinkAKS'
   params: {
     privateDnsZoneName: privatednsAKSZone.outputs.privateDNSZoneName
@@ -103,7 +103,9 @@ module privateDNSLinkAKS 'modules/vnet/privatednslink.bicep' = {
 module aksPolicy 'modules/policy/policy.bicep' = {
   scope: resourceGroup(rg.name)
   name: 'aksPolicy'
-  params: {}
+  params: {
+    location: rg.location
+  }
 }
 
 resource akslaworkspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' existing ={
@@ -112,13 +114,12 @@ resource akslaworkspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' ex
 }
 
 resource aksSubnet 'Microsoft.Network/virtualNetworks/subnets@2021-02-01' existing = {
-  scope: resourceGroup(vnetRgName)
-  name: '${vnetName}/${subnetName}'
+  parent: vnet
+  name: subnetName
 }
 
-
 module aksCluster 'modules/aks/privateaks.bicep' = {
-  scope: resourceGroup(rg.name)
+  scope: rg
   name: 'aksCluster'
   params: {
     autoScalingProfile:autoScalingProfile
@@ -187,7 +188,7 @@ module aksPvtNetworkContrib 'modules/Identity/networkcontributorrole.bicep' = {
 }
 
 module aksPvtDNSContrib 'modules/Identity/pvtdnscontribrole.bicep' = {
-  scope: resourceGroup(rg.name)
+  scope: rg
   name: 'aksPvtDNSContrib'
   params: {
     location: location
@@ -209,7 +210,7 @@ module vmContributeRole 'modules/Identity/role.bicep' = {
 }
 
 module aksuseraccess 'modules/Identity/role.bicep' = {
-  scope: resourceGroup(rg.name)
+  scope: rg
   name: 'aksuseraccess'
   params: {
     principalId: aksuseraccessprincipalId
@@ -218,7 +219,7 @@ module aksuseraccess 'modules/Identity/role.bicep' = {
 }
 
 module aksuseraccessRBAC 'modules/Identity/role.bicep' = {
-  scope: resourceGroup(rg.name)
+  scope: rg
   name: 'aksuseraccessRBAC'
   params: {
     principalId: aksuseraccessprincipalId
@@ -227,7 +228,7 @@ module aksuseraccessRBAC 'modules/Identity/role.bicep' = {
 }
 
 module aksadminaccess 'modules/Identity/role.bicep' = {
-  scope: resourceGroup(rg.name)
+  scope: rg
   name: 'aksadminaccess'
   params: {
     principalId: aksadminaccessprincipalId
@@ -236,7 +237,7 @@ module aksadminaccess 'modules/Identity/role.bicep' = {
 }
 
 module aksadminaccessRBAC 'modules/Identity/role.bicep' = {
-  scope: resourceGroup(rg.name)
+  scope: rg
   name: 'aksadminaccessRBAC'
   params: {
     principalId: aksadminaccessprincipalId
@@ -253,21 +254,3 @@ module keyvaultAccessPolicy 'modules/keyvault/keyvault.bicep' = {
     vaultName: keyvaultName
   }
 }
-
-//  Telemetry Deployment
-@description('Enable usage and telemetry feedback to Microsoft.')
-param enableTelemetry bool = true
-var telemetryId = 'a4c036ff-1c94-4378-862a-8e090a88da82-${location}'
-resource telemetrydeployment 'Microsoft.Resources/deployments@2021-04-01' = if (enableTelemetry) {
-  name: telemetryId
-  location: location
-  properties: {
-    mode: 'Incremental'
-    template: {
-      '$schema': 'https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#'
-      contentVersion: '1.0.0.0'
-      resources: {}
-    }
-  }
-}
-

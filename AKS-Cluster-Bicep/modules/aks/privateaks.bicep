@@ -164,23 +164,24 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2023-10-01' = {
       tenantID: subscription().tenantId
     }
     // Required for Workload Identity
-    // oidcIssuerProfile: {
-    //   enabled: true
-    // }
+    oidcIssuerProfile: {
+       enabled: true
+    }
     securityProfile: {
-      defender:{
+      defender: {
         logAnalyticsWorkspaceResourceId: logworkspaceid
         securityMonitoring: {
           enabled: true
         }
       }
+      imageCleaner: {
+        enabled: true
+        intervalHours: 168 // once per week (default)
+      }
+      workloadIdentity: {
+        enabled: true
+     }      
     }
-
-      //Enable the following  configurations for Workload identity
-      // Features are currently in preview
-      // workloadIdentity: {
-      //   enabled: true
-      // }
     
     addonProfiles: {
       omsagent: {
