@@ -90,7 +90,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2022-09-01' existing = {
 
 resource dnsVnet 'Microsoft.Network/virtualNetworks@2022-09-01' existing = {
   name: dnsVnetName
-  scope: resourceGroup(dnsVnetName)
+  scope: resourceGroup(dnsVnetRgName)
 }
 
 
@@ -195,7 +195,7 @@ module aksPvtNetworkContrib 'modules/Identity/networkcontributorrole.bicep' = {
 }
 
 module aksPvtDNSContrib 'modules/Identity/pvtdnscontribrole.bicep' = {
-  scope: rg
+  scope: resourceGroup(dnsVnetRgName)
   name: 'aksPvtDNSContrib'
   params: {
     location: location
