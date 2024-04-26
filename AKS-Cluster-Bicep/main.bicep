@@ -6,6 +6,8 @@ param akslaWorkspaceName string
 param akslaWorkspaceRGName string
 param vnetRgName string
 param vnetName string
+param dnsVnetRgName string
+param dnsVnetName string
 param subnetName string
 param aksuseraccessprincipalId string
 param aksadminaccessprincipalId string
@@ -73,7 +75,7 @@ module aksPodIdentityRole 'modules/Identity/role.bicep' = {
 
 
 module privatednsAKSZone 'modules/vnet/privatednszone.bicep' = {
-  scope: rg
+  scope: resourceGroup(dnsVnetRgName)
   name: 'privatednsAKSZone'
   params: {
     privateDNSZoneName: 'privatelink.${toLower(location)}.azmk8s.io'
@@ -86,13 +88,18 @@ resource vnet 'Microsoft.Network/virtualNetworks@2022-09-01' existing = {
   scope: resourceGroup(vnetRgName)
 }
 
+resource dnsVnet 'Microsoft.Network/virtualNetworks@2022-09-01' existing = {
+  name: dnsVnetName
+  scope: resourceGroup(dnsVnetName)
+}
+
 
 module privateDNSLinkAKS 'modules/vnet/privatednslink.bicep' = {
-  scope: rg
+  scope: resourceGroup(dnsVnetRgName)
   name: 'privateDNSLinkAKS'
   params: {
     privateDnsZoneName: privatednsAKSZone.outputs.privateDNSZoneName
-    vnetId: vnet.id
+    vnetId: dnsVnet.id
   }
   dependsOn: [
     privatednsAKSZone
